@@ -69,6 +69,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     player.physicsBody?.isDynamic = true
                     player.physicsBody?.affectedByGravity = false
                     enemy.physicsBody?.isDynamic = true
+                    enemy.physicsBody?.affectedByGravity = false
                     player.position = CGPoint(x: 0, y: 0)
                     enemy.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
                     enemy.position = CGPoint(x: -250, y: 500)
@@ -91,5 +92,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.physicsBody?.isDynamic = false
             enemy.physicsBody?.isDynamic = false
         }
+        enemy.physicsBody?.velocity = CGVector(dx: enemy.position.x - player.position.x,
+                                               dy: enemy.position.y - player.position.y)
     }
 }
