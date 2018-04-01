@@ -25,7 +25,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         enemy = self.childNode(withName: "enemy") as! SKSpriteNode
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
         border.friction = 0
-        border.restitution = 1
+        border.restitution = 0
         self.physicsBody = border
     }
     
@@ -92,7 +92,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.physicsBody?.isDynamic = false
             enemy.physicsBody?.isDynamic = false
         }
-        enemy.physicsBody?.velocity = CGVector(dx: enemy.position.x - player.position.x,
-                                               dy: enemy.position.y - player.position.y)
+        enemy.physicsBody?.velocity = CGVector(dx: player.position.x - enemy.position.x,
+                                               dy: player.position.y - enemy.position.y)
     }
 }
